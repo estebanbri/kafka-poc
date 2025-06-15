@@ -4,5 +4,5 @@ Kafka UI runs on http://localhost8082
 
 Cada rama tiene el ejemplo:
 1. string value serializer/deserializer (StringSerializer and StringDeserializer)
-2. string object serializer/deserializer (JacksonSerializer and JacksonDeserializer)
+2. string object serializer/deserializer (JsonSerializer and JsonDeserializer)
 3. avro serializer/deserializer (AvroSerializer and AvroDeserializer)
