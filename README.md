@@ -4,7 +4,7 @@ Kafka UI runs on http://localhost8082
 
 Cada rama tiene el ejemplo:
 1. ***string value serializer/deserializer*** (StringSerializer and StringDeserializer)
-2. ***string object serializer/deserializer*** (JsonSerializer and JsonDeserializer). Nota: recorda que hay que definirle el
+2. ***json object serializer/deserializer*** (JsonSerializer and JsonDeserializer). Nota: recorda que hay que definirle el
 trust packages es decir tanto el evento generado y que se serializa para ingresar al topic tiene que tener la misma 
 estructura de paquete que al momento de deserializar. Es decir si tu clase MiEvento dentro del productor estaba
 dentro de paquete com.example.productor.model y tu clase MiEvento dentro del consumidor estaba dentro de paquete
