@@ -1,6 +1,6 @@
-package com.example.mic_producer.controller;
+package com.example.controller;
 
-import com.example.mic_producer.service.EventProducerService;
+import com.example.service.EventProducerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

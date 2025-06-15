@@ -1,5 +1,6 @@
-package com.example.mic_producer.service;
+package com.example.service;
 
+import com.example.model.MiEvento;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +14,10 @@ public class EventProducerService {
     @Value("${topic.name}")
     private String topicName;
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, MiEvento> kafkaTemplate;
     public void sendTopic(String message) {
-       kafkaTemplate.send(topicName, message);
-        log.info("Mensaje enviado: " + message);
+
+       kafkaTemplate.send(topicName, new MiEvento(message));
+       log.info("Mensaje enviado: " + message);
     }
 }
