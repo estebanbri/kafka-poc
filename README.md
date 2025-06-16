@@ -16,9 +16,9 @@ los eventos (evolucion de esquemas). Estos schemas son almacenados dentro de un 
 al momento de serializar con AvroSerializer almacena el schema en el registry y cuando se deserializa el AvroDeserializer
 obtiene el schema de dicho regitry previamente validando los campos y luego descerializa.
 ``` 
-Productor -> AvroSerializer  ├──      Kafka      ──┤ AvroDeserializer <- Consumidor
-                             └── Schema Registry ──┘ 
-                         (employee.avcs, employee-v2.avcs...) 
+Productor -> AvroSerializer  ───────────────           Kafka   ────────────  AvroDeserializer <- Consumidor
+                      └─send avro schema ──      Schema Registry   ── read avro schema ┘ 
+                                       (employee.avcs, employee-v2.avcs...) 
 ``` 
 Avro Schema = es un contrato entre el productos y consumidor (ejemplo "employee.avcs") existe una herramienta Avro
 o plugin maven para generar las clases a partir de definir dicho esquema .avcs. 
