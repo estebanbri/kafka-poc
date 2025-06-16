@@ -1,5 +1,5 @@
-Producer runs on http://localhost:8080
-Consumer runs on http://localhost8081
+Producer runs on http://localhost:9090
+Consumer runs on http://localhost9091
 Kafka UI runs on http://localhost8082
 
 Cada rama tiene el ejemplo:
@@ -11,4 +11,14 @@ dentro de paquete com.example.productor.model y tu clase MiEvento dentro del con
 com.example.consumidor.model por mas de que tengan los mismos campos no coinciden en la ruta de paquetes y por seguridad
 el consumidor rechazada al deserializarlo entonces la solucion es siempre que la clase a serializar y deserializar tienen
 que tener la misma ruta de paquetes ejemplo aqui com.example.model tanto en el productor como el consumidor.
-3. ***avro serializer/deserializer*** (AvroSerializer and AvroDeserializer)
+3. ***avro serializer/deserializer*** (AvroSerializer and AvroDeserializer). Nota: soluciona la cambios en el modelo de
+los eventos (evolucion de esquemas). Estos schemas son almacenados dentro de un componente llamado "Schema Registry",
+al momento de serializar con AvroSerializer almacena el schema en el registry y cuando se deserializa el AvroDeserializer
+obtiene el schema de dicho regitry previamente validando los campos y luego descerializa.
+``` 
+Productor -> AvroSerializer  ├──      Kafka      ──┤ AvroDeserializer <- Consumidor
+                             └── Schema Registry ──┘ 
+                         (employee.avcs, employee-v2.avcs...) 
+``` 
+Avro Schema = es un contrato entre el productos y consumidor (ejemplo "employee.avcs") existe una herramienta Avro
+o plugin maven para generar las clases a partir de definir dicho esquema .avcs. 

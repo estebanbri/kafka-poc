@@ -1,12 +1,16 @@
 server:
-  port: 8080
+  port: 9090
 
 spring:
   kafka:
     bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: http://127.0.0.1:8081
 
 topic:
   name: "mi-topic"

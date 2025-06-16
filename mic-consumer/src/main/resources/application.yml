@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 9091
 
 spring:
   kafka:
@@ -8,9 +8,14 @@ spring:
       group-id: mi-grupo
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       properties:
-        spring.json.trusted.packages: com.example.model
+        schema:
+          registry:
+            url: http://127.0.0.1:8081
+        specific:
+          avro:
+            reader: "true"
 
 topic:
   name: 'mi-topic'
