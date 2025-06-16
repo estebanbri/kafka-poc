@@ -1,0 +1,11 @@
+{
+  "namespace": "com.example.model",
+  "type": "record",
+  "name": "MiEvento",
+  "fields": [
+    {
+      "name": "message",
+      "type": "string"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
-package com.example.mic_consumer;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicConsumerApplication {
+public class MicProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicConsumerApplication.class, args);
+		SpringApplication.run(MicProducerApplication.class, args);
 	}
 
 }
